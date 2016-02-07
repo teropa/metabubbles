@@ -9,8 +9,12 @@ import {CircleComponent} from './Circle.component';
     <svg [attr.viewBox]="'0 0 ' + width + ' ' + height"
          preserveAspectRatio="xMidYMid meet">
       <svg:g a-circle
-             *ngFor="#c of circles.getCollisionCircles()"
-             [circle]="c">
+             *ngFor="#c of circles.collisionCircles"
+             [x]="c.x"
+             [y]="c.y"
+             [radius]="c.radius"
+             [color]="c.color"
+             [visible]="c.visible">
       </svg:g>
     </svg>
   `,

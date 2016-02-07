@@ -4,5 +4,6 @@ export interface Circle {
   x: number;
   y: number;
   radius: number;
-  color?: Color;
+  visible?: boolean;
+  color?: string;
 }

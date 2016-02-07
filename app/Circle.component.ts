@@ -1,6 +1,5 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, ChangeDetectionStrategy} from 'angular2/core';
 import {Circle} from './Circle';
-import {RgbaPipe} from './Rgba.Pipe';
 
 @Component({
   selector: '[a-circle]',
@@ -11,17 +10,22 @@ import {RgbaPipe} from './Rgba.Pipe';
       r=0.15
       vector-effect="non-scaling-stroke"
       [attr.transform]="getTransform()"
-      [attr.fill]="circle.color | rgba">
+      [attr.fill]="color"
+      [style]="visible ? '' : 'display: none;'">
     </svg:circle>
   `,
   styleUrls: ['app/Circle.css'],
-  pipes: [RgbaPipe]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CircleComponent {
-  @Input() circle:Circle;
+  @Input() x:number;
+  @Input() y:number;
+  @Input() radius:number;
+  @Input() color:string;
+  @Input() visible:boolean;
 
   getTransform() {
-    return `translate(${this.circle.x}, ${this.circle.y}) scale(${this.circle.radius}) `;
+    return `translate(${this.x}, ${this.y}) scale(${this.radius})`;
   }
 
 }

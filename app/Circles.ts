@@ -12,7 +12,8 @@ interface SourceCirclePair {
 export class Circles {
   sourceCircles:SourceCircle[] = [];
   sourceCirclePairs:SourceCirclePair[] = [];
-  collisionCircles:Map<SourceCirclePair, Circle> = new Map<SourceCirclePair, Circle>();
+  collisionCircles:Circle[] = [];
+  private collisionCircleMap:Map<SourceCirclePair, Circle> = new Map<SourceCirclePair, Circle>();
 
   constructor(@Inject('canvasWidth') private canvasWidth:number,
               @Inject('canvasHeight') private canvasHeight:number,
@@ -33,29 +34,29 @@ export class Circles {
       if (overlap < 0) {
         const midX = (left.x + right.x) / 2;
         const midY = (left.y + right.y) / 2;
-        let collisionCircle = this.collisionCircles.get(pair);
+        let collisionCircle = this.collisionCircleMap.get(pair);
         if (collisionCircle) {
           collisionCircle.x = midX;
           collisionCircle.y = midY;
           collisionCircle.radius = -overlap;
         } else {
-          const color:Color = {
+          collisionCircle = {x: midX, y: midY, radius: -overlap};
+          this.collisionCircleMap.set(pair, collisionCircle);
+          this.collisionCircles.push(collisionCircle);
+        }
+        if (!collisionCircle.visible) {
+          collisionCircle.visible = true;
+          collisionCircle.color = this.colorString({
             red: timeStep % 255,
             green: timeStep + 170 % 230,
             blue: timeStep + 85 % 230,
             alpha: 0.5
-          };
-          collisionCircle = {x: midX, y: midY, radius: -overlap, color: color};
-          this.collisionCircles.set(pair, collisionCircle);
+          });
         }
-      } else {
-        this.collisionCircles.delete(pair);
+      } else if (this.collisionCircleMap.has(pair)) {
+        this.collisionCircleMap.get(pair).visible = false;
       }
     }
-  }
-
-  getCollisionCircles() {
-    return Array.from(this.collisionCircles.values());
   }
 
   private makeSourceCircles() {
@@ -70,5 +71,9 @@ export class Circles {
         this.sourceCirclePairs.push({left: this.sourceCircles[i], right: this.sourceCircles[j + 1]});
       }
     }
+  }
+
+  private colorString(color:Color):string {
+    return `rgba(${color.red}, ${color.green}, ${color.blue}, ${color.alpha})`;
   }
 }
