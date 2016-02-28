@@ -14,7 +14,7 @@ import {Circle} from './Circle';
       [style]="visible ? '' : 'display: none;'">
     </svg:circle>
   `,
-  styleUrls: ['app/Circle.css'],
+  styleUrls: ['app/Circle.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CircleComponent {

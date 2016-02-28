@@ -18,7 +18,7 @@ import {CircleComponent} from './Circle.component';
       </svg:g>
     </svg>
   `,
-  styleUrls: ['app/Canvas.css'],
+  styleUrls: ['app/Canvas.component.css'],
   directives: [CircleComponent]
 })
 export class CanvasComponent implements OnInit, OnDestroy {
