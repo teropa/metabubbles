@@ -49,8 +49,8 @@ export class Circles {
           collisionCircle.visible = true;
           collisionCircle.color = this.colorString({
             red: timeStep % 255,
-            green: timeStep + 170 % 230,
-            blue: timeStep + 85 % 230,
+            green: (timeStep + 170) % 230,
+            blue: (timeStep + 85) % 230,
             alpha: 0.5
           });
         }
