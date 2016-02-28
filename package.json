@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "angular2": "2.0.0-beta.7",
-    "systemjs": "0.19.23",
     "es6-promise": "3.1.2",
     "es6-shim": "0.33.3",
     "reflect-metadata": "0.1.2",
@@ -13,21 +12,18 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
-    "concurrently": "1.0.0",
-    "lite-server": "2.0.1",
-    "systemjs-builder": "0.15.10",
     "typescript": "1.8.2",
     "typings": "0.6.8",
-    "uglify-js": "2.6.2"
+    "webpack": "1.12.14",
+    "webpack-dev-server": "1.14.1"
   },
   "scripts": {
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
-    "build": "node build.js && uglifyjs bundle.js > bundle.min.js"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "Tero Parviainen <tero@teropa.info>",

@@ -1,6 +1,6 @@
 import {Circle} from './Circle';
 import {Color} from './Color';
-import {MathStuff} from './MathStuff';
+import {MathStuff} from './MathStuff.service';
 
 export class SourceCircle implements Circle {
   x: number;
