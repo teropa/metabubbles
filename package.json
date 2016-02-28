@@ -17,11 +17,14 @@
     "lite-server": "2.0.1",
     "systemjs-builder": "0.15.10",
     "typescript": "1.8.2",
+    "typings": "0.6.8",
     "uglify-js": "2.6.2"
   },
   "scripts": {
+    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "typings": "typings",
     "lite": "lite-server",
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "build": "node build.js && uglifyjs bundle.js > bundle.min.js"
