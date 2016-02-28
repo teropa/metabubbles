@@ -4,6 +4,10 @@ import {CanvasComponent} from './Canvas.component';
 import {Circles} from './Circles.service';
 import {MathStuff} from './MathStuff.service';
 
+declare var require:any;
+
+require('style!css!./style.css');
+
 enableProdMode();
 
 bootstrap(CanvasComponent, [

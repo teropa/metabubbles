@@ -3,6 +3,8 @@ import {Circle} from './Circle';
 import {Circles} from './Circles.service';
 import {CircleComponent} from './Circle.component';
 
+declare var require: any
+
 @Component({
   selector: 'a-canvas',
   template: `
@@ -18,7 +20,7 @@ import {CircleComponent} from './Circle.component';
       </svg:g>
     </svg>
   `,
-  styleUrls: ['app/Canvas.component.css'],
+  styles: [require('css!./Canvas.component.css').toString()],
   directives: [CircleComponent]
 })
 export class CanvasComponent implements OnInit, OnDestroy {

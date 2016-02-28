@@ -1,6 +1,8 @@
 import {Component, Input, ChangeDetectionStrategy} from 'angular2/core';
 import {Circle} from './Circle';
 
+declare var require: any
+
 @Component({
   selector: '[a-circle]',
   template: `
@@ -14,7 +16,7 @@ import {Circle} from './Circle';
       [style]="visible ? '' : 'display: none;'">
     </svg:circle>
   `,
-  styleUrls: ['app/Circle.component.css'],
+  styles: [require('css!./Circle.component.css').toString()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CircleComponent {

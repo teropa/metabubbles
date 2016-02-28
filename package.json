@@ -12,6 +12,8 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "css-loader": "0.23.1",
+    "style-loader": "0.13.0",
     "typescript": "1.8.2",
     "typings": "0.6.8",
     "webpack": "1.12.14",
