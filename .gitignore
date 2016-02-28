@@ -1,5 +1,2 @@
-app/*.js
-app/*.js.map
 bundle*.js
 node_modules
-typings

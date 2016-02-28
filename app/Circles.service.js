@@ -1,30 +1,20 @@
 import {Inject, Injectable} from 'angular2/core';
-import {Circle} from './Circle';
-import {Color} from './Color';
 import {MathStuff} from './MathStuff.service';
 import {SourceCircle} from './SourceCircle';
 
-interface SourceCirclePair {
-  left:SourceCircle;
-  right:SourceCircle;
-}
-
 @Injectable()
 export class Circles {
-  sourceCircles:SourceCircle[] = [];
-  sourceCirclePairs:SourceCirclePair[] = [];
-  collisionCircles:Circle[] = [];
-  private collisionCircleMap:Map<SourceCirclePair, Circle> = new Map<SourceCirclePair, Circle>();
+  collisionCircles = [];
+  collisionCircleMap = new Map();
 
-  constructor(@Inject('canvasWidth') private canvasWidth:number,
-              @Inject('canvasHeight') private canvasHeight:number,
-              @Inject('sourceCircleCount') private sourceCircleCount:number,
-              @Inject(MathStuff) private math:MathStuff) {
-    this.makeSourceCircles();
+  static parameters = ['canvasWidth', 'canvasHeight', 'sourceCircleCount', MathStuff];
+  constructor(canvasWidth, canvasHeight, sourceCircleCount, math) {
+    this.math = math;
+    this.makeSourceCircles(sourceCircleCount, canvasWidth, canvasHeight);
     this.makeSourceCirclePairs();
   }
 
-  update(timeStep:number) {
+  update(timeStep) {
     for (const circle of this.sourceCircles) {
       circle.move();
     }
@@ -60,13 +50,15 @@ export class Circles {
     }
   }
 
-  private makeSourceCircles() {
-    for (let i=0 ; i<this.sourceCircleCount ; i++) {
-      this.sourceCircles.push(new SourceCircle(this.math, this.canvasWidth, this.canvasHeight));
+  makeSourceCircles(count, canvasWidth, canvasHeight) {
+    this.sourceCircles = [];
+    for (let i=0 ; i < count ; i++) {
+      this.sourceCircles.push(new SourceCircle(this.math, canvasWidth, canvasHeight));
     }
   }
 
-  private makeSourceCirclePairs() {
+  makeSourceCirclePairs() {
+    this.sourceCirclePairs = [];
     for (let i = 0 ; i < this.sourceCircles.length - 1 ; i++) {
       for (let j = i ; j < this.sourceCircles.length - 1 ; j++) {
         this.sourceCirclePairs.push({left: this.sourceCircles[i], right: this.sourceCircles[j + 1]});
@@ -74,7 +66,7 @@ export class Circles {
     }
   }
 
-  private colorString(color:Color):string {
+  colorString(color) {
     return `rgba(${color.red}, ${color.green}, ${color.blue}, ${color.alpha})`;
   }
 }

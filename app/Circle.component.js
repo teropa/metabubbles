@@ -1,10 +1,8 @@
-import {Component, Input, ChangeDetectionStrategy} from 'angular2/core';
-import {Circle} from './Circle';
-
-declare var require: any
+import {Component, ChangeDetectionStrategy} from 'angular2/core';
 
 @Component({
   selector: '[a-circle]',
+  inputs: ['x', 'y', 'radius', 'color', 'visible'],
   template: `
     <svg:circle
       cx=0
@@ -20,14 +18,7 @@ declare var require: any
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CircleComponent {
-  @Input() x:number;
-  @Input() y:number;
-  @Input() radius:number;
-  @Input() color:string;
-  @Input() visible:boolean;
-
   getTransform() {
     return `translate(${this.x}, ${this.y}) scale(${this.radius})`;
   }
-
 }

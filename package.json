@@ -12,18 +12,17 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "babel-core": "6.5.2",
+    "babel-loader": "6.2.4",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
     "css-loader": "0.23.1",
     "style-loader": "0.13.0",
-    "typescript": "1.8.2",
-    "typings": "0.6.8",
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
     "start": "webpack-dev-server --inline",
     "build": "webpack"
   },
