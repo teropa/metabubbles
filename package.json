@@ -24,7 +24,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --inline",
     "build": "webpack"
   },
   "keywords": [],
