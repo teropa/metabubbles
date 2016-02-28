@@ -8,12 +8,12 @@ import {CircleComponent} from './Circle.component';
     <svg [attr.viewBox]="'0 0 ' + canvasWidth + ' ' + canvasHeight"
          preserveAspectRatio="xMidYMid meet">
       <svg:g a-circle
-             *ngFor="#c of circles.collisionCircles"
-             [x]="c.x"
-             [y]="c.y"
-             [radius]="c.radius"
-             [color]="c.color"
-             [visible]="c.visible">
+             *ngFor="#circle of circles.collisionCircles"
+             [x]="circle.x"
+             [y]="circle.y"
+             [radius]="circle.radius"
+             [color]="circle.color"
+             [visible]="circle.visible">
       </svg:g>
     </svg>
   `,

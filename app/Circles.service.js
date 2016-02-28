@@ -1,5 +1,4 @@
 import {Inject, Injectable} from 'angular2/core';
-import {Math} from './Math.service';
 import {SourceCircle} from './SourceCircle';
 
 @Injectable()
@@ -7,9 +6,8 @@ export class Circles {
   collisionCircles = [];
   collisionCircleMap = new Map();
 
-  static parameters = ['canvasWidth', 'canvasHeight', 'sourceCircleCount', Math];
-  constructor(canvasWidth, canvasHeight, sourceCircleCount, math) {
-    this.math = math;
+  static parameters = ['canvasWidth', 'canvasHeight', 'sourceCircleCount'];
+  constructor(canvasWidth, canvasHeight, sourceCircleCount) {
     this.makeSourceCircles(sourceCircleCount, canvasWidth, canvasHeight);
     this.makeSourceCirclePairs();
   }
@@ -20,7 +18,7 @@ export class Circles {
     }
     for (const pair of this.sourceCirclePairs) {
       const {left, right} = pair;
-      const dist = this.math.distance(left.x, left.y, right.x, right.y);
+      const dist = this.distance(left.x, left.y, right.x, right.y);
       const overlap = dist - left.radius - right.radius;
       if (overlap < 0) {
         const midX = (left.x + right.x) / 2;
@@ -53,7 +51,7 @@ export class Circles {
   makeSourceCircles(count, canvasWidth, canvasHeight) {
     this.sourceCircles = [];
     for (let i=0 ; i < count ; i++) {
-      this.sourceCircles.push(new SourceCircle(this.math, canvasWidth, canvasHeight));
+      this.sourceCircles.push(new SourceCircle(canvasWidth, canvasHeight));
     }
   }
 
@@ -69,4 +67,12 @@ export class Circles {
   colorString(color) {
     return `rgba(${color.red}, ${color.green}, ${color.blue}, ${color.alpha})`;
   }
+
+  distance(x1, y1, x2, y2) {
+    return Math.sqrt(
+      Math.pow(x2 - x1, 2) +
+      Math.pow(y2 - y1, 2)
+    );
+  }
+
 }
