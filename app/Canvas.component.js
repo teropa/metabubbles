@@ -18,7 +18,8 @@ import {CircleComponent} from './Circle.component';
     </svg>
   `,
   styles: [require('css!./Canvas.component.css').toString()],
-  directives: [CircleComponent]
+  directives: [CircleComponent],
+  providers: [Circles]
 })
 export class CanvasComponent {
 
