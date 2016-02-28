@@ -1,5 +1,5 @@
 import {Inject, Injectable} from 'angular2/core';
-import {MathStuff} from './MathStuff.service';
+import {Math} from './Math.service';
 import {SourceCircle} from './SourceCircle';
 
 @Injectable()
@@ -7,7 +7,7 @@ export class Circles {
   collisionCircles = [];
   collisionCircleMap = new Map();
 
-  static parameters = ['canvasWidth', 'canvasHeight', 'sourceCircleCount', MathStuff];
+  static parameters = ['canvasWidth', 'canvasHeight', 'sourceCircleCount', Math];
   constructor(canvasWidth, canvasHeight, sourceCircleCount, math) {
     this.math = math;
     this.makeSourceCircles(sourceCircleCount, canvasWidth, canvasHeight);

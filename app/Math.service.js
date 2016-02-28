@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 
 @Injectable()
-export class MathStuff {
+export class Math {
 
   randInt(max) {
     return Math.floor(Math.random() * max);
