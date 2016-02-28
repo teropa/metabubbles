@@ -1,8 +1,8 @@
 import {provide, enableProdMode} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {CanvasComponent} from './Canvas.component';
-import {Circles} from './Circles';
-import {MathStuff} from './MathStuff';
+import {Circles} from './Circles.service';
+import {MathStuff} from './MathStuff.service';
 
 enableProdMode();
 

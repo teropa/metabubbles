@@ -1,7 +1,7 @@
-import {Inject} from 'angular2/core';
+import {Inject, Injectable} from 'angular2/core';
 import {Circle} from './Circle';
 import {Color} from './Color';
-import {MathStuff} from './MathStuff';
+import {MathStuff} from './MathStuff.service';
 import {SourceCircle} from './SourceCircle';
 
 interface SourceCirclePair {
@@ -9,6 +9,7 @@ interface SourceCirclePair {
   right:SourceCircle;
 }
 
+@Injectable()
 export class Circles {
   sourceCircles:SourceCircle[] = [];
   sourceCirclePairs:SourceCirclePair[] = [];

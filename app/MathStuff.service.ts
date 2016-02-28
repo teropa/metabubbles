@@ -1,5 +1,7 @@
+import {Injectable} from 'angular2/core';
 import {Color} from './Color';
 
+@Injectable()
 export class MathStuff {
 
   randInt(max:number):number {

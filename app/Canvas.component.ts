@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, OnDestroy} from 'angular2/core';
 import {Circle} from './Circle';
-import {Circles} from './Circles';
+import {Circles} from './Circles.service';
 import {CircleComponent} from './Circle.component';
 
 @Component({
