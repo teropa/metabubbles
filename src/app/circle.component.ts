@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 @Component({
 	selector: '[mb-circle]',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	styles: [ './circle.component.css' ],
 	template:
 `<svg:circle [attr.cx]="x" [attr.cy]="y" [attr.r]="radius" [attr.fill]="color" [ngStyle]="{ 'display' : getDisplay() }"></svg:circle>`
 })
