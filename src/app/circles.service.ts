@@ -5,13 +5,13 @@ import { Circle } from './circle';
 @Injectable()
 export class Circles {
 
-	circleMap:Map<any, any> = new Map<any, any>();
-	circles:Array<Circle> = [];
-	sourceCircles:Array<Circle> = [];
-	pairs:Array<any> = [];
-	timeStep:number = 0;
-	canvasWidth:number;
-	canvasHeight:number;
+	circleMap: Map<any, any> = new Map<any, any>();
+	circles: Array<Circle> = [];
+	sourceCircles: Array<Circle> = [];
+	pairs: Array<any> = [];
+	timeStep = 0;
+	canvasWidth: number;
+	canvasHeight: number;
 
 	constructor() {
 
@@ -80,9 +80,9 @@ export class Circles {
 					collisionCircle.visible = true;
 
 					// Gray scale
-//					const red = this.timeStep % 256;
-//					const green = this.timeStep % 256;
-//					const blue = this.timeStep % 256;
+					// const red = this.timeStep % 256;
+					// const green = this.timeStep % 256;
+					// const blue = this.timeStep % 256;
 
 					// Color!
 					const red = this.timeStep % 256;

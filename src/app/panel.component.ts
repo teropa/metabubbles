@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { CircleComponent } from './circle.component';
 import { Circle } from './circle';
 import { Circles } from './circles.service';
 
 @Component({
-	selector: 'panel',
+	selector: 'mb-panel',
 	styleUrls: [ './panel.component.css' ],
 	templateUrl: './panel.component.html'
 })
 
-export class PanelComponent {
-	running:boolean = false;
-	height:number;
-	width:number;
-    circs:Array<Circle> = [];
+export class PanelComponent implements OnInit, OnDestroy {
+	running = false;
+	height: number;
+	width: number;
+	circs: Array<Circle> = [];
 
-	constructor(private circles:Circles) {
+	constructor(private circles: Circles) {
 		this.circs = circles.circles;
 	}
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-root',
-	template: '<panel></panel>'
+	selector: 'mb-root',
+	template: '<mb-panel></mb-panel>'
 })
 export class AppComponent {}
