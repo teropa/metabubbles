@@ -1,24 +1,20 @@
-import {Component, ChangeDetectionStrategy} from 'angular2/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
-  selector: '[a-circle]',
-  inputs: ['x', 'y', 'radius', 'color', 'visible'],
-  template: `
-    <svg:circle
-      cx=0
-      cy=0
-      r=0.15
-      vector-effect="non-scaling-stroke"
-      [attr.transform]="getTransform()"
-      [attr.fill]="color"
-      [style]="visible ? '' : 'display: none;'">
-    </svg:circle>
-  `,
-  styles: [require('css!./Circle.component.css').toString()],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: '[mb-circle]',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	template: `<svg:circle [attr.cx]="x" [attr.cy]="y" [attr.r]="radius" [attr.fill]="color" [ngStyle]="{ 'display' : getDisplay() }"></svg:circle>`
 })
+
 export class CircleComponent {
-  getTransform() {
-    return `translate(${this.x}, ${this.y}) scale(${this.radius})`;
-  }
+	@Input() x:number;
+	@Input() y:number;
+	@Input() radius:number;
+	@Input() visible:boolean;
+	@Input() color:string;
+
+	getDisplay() {
+		return (this.visible ? 'inherit' : 'none');
+	}
 }
+

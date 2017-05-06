@@ -5,16 +5,28 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { CircleComponent } from './circle.component';
+import { PanelComponent } from './panel.component';
+import { Circle }	from './circle';
+import { Circles } from './circles.service';
+
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		CircleComponent,
+		PanelComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpModule
+	],
+	providers: [
+		Circles
+	],
+	bootstrap: [
+		AppComponent
+	]
 })
 export class AppModule { }
