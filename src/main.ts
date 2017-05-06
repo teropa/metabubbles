@@ -1,13 +1,11 @@
-import {provide, enableProdMode} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
-import {CanvasComponent} from './Canvas.component';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-require('style!css!./style.css');
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
-enableProdMode();
+if (environment.production) {
+  enableProdMode();
+}
 
-bootstrap(CanvasComponent, [
-  provide('canvasWidth', {useValue: 860}),
-  provide('canvasHeight', {useValue: 512}),
-  provide('sourceCircleCount', {useValue: 100})
-]);
+platformBrowserDynamic().bootstrapModule(AppModule);
