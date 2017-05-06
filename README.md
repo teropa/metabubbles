@@ -5,7 +5,7 @@ A generative art experiment with Angular 2+.
 
 Based on the "Emergence" chapter in Matt Pearson's wonderful [Generative Art](http://zenbullets.com/book.php) book.
 
-From Tero Parvianier's original tutorial [Metabubbles: Making Generative Art with Angular 
+From Tero Parviainen's original tutorial [Metabubbles: Making Generative Art with Angular 
 2](https://teropa.info/blog/2016/02/28/metabubbles-generative-art-with-angular-2.html) about this code:
 
 Most people talk about Angular 2 as a platform for writing business applications. But there's no rule that says this is the only thing it should be used for. If you're in 
